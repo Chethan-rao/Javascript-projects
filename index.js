@@ -46,12 +46,13 @@ function resett()
 var flag=0;
 function startgame()
 {
-  if(flag==0)
+   if(flag==0)
       document.getElementById('button').remove();
-  flag++;
+   flag++;
    var div = document.createElement("div");
-   div.setAttribute("class","flex-box-rps");
-   div.setAttribute("id","flex-box-rps-div");
+   div.setAttribute("class","maindiv");
+   div.setAttribute("id","mainid");
+
 
    var img1 = document.createElement("img");
    img1.setAttribute('id','rock');
@@ -77,7 +78,7 @@ function startgame()
    img3.setAttribute('onclick','rpsGame(this)');
    div.appendChild(img3);
 
-   document.getElementById('contain').appendChild(div);
+   document.getElementById('flex-box-rps-div').appendChild(div);
 }
 
 
@@ -166,13 +167,13 @@ function rpsFrontend(human,bot,messageto)
   botdiv.setAttribute('id','toremove3');
 
   humandiv.innerHTML = "<img src='"+ imageData[human] +"' height=150,width=150 style='box-shadow: 0px 10px 50px rgba(37,50,233,1)'>"
-  document.getElementById('flex-box-rps-div').appendChild(humandiv);
+  document.getElementById('mainid').appendChild(humandiv);
 
-  messagediv.innerHTML = "<h1 style='color: " + messageto['color'] + "; font-size: 60px; padding: 30px; '>" + messageto['message'] +"</h1";
-  document.getElementById('flex-box-rps-div').appendChild(messagediv);
+  messagediv.innerHTML = "<h1 style='color: " + messageto['color'] + ";  font-size: 60px; padding: 30px; '>" + messageto['message'] +"</h1";
+  document.getElementById('mainid').appendChild(messagediv);
 
   botdiv.innerHTML = "<img src='"+ imageData[bot] +"' height=150,width=150 style='box-shadow: 0px 10px 50px rgba(243,38,24,1)'>"
-  document.getElementById('flex-box-rps-div').appendChild(botdiv);
+  document.getElementById('mainid').appendChild(botdiv);
 }
 
 function tryagain()
@@ -192,8 +193,6 @@ function tryagain()
 function Playagain()
 {
   document.getElementById('demo').remove();
-  document.getElementById('toremove1').remove();
-  document.getElementById('toremove2').remove();
-  document.getElementById('toremove3').remove();
+  document.getElementById('mainid').remove();
   startgame();
 }
